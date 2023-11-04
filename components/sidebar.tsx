@@ -20,6 +20,12 @@ const routes = [
       color: "text-sky-500"
     },
     {
+      label: 'Code Generation',
+      icon: Code,
+      color: "text-green-700",
+      href: '/code',
+    },
+    {
       label: 'Conversation',
       icon: MessageSquare,
       href: '/conversation',
@@ -32,22 +38,16 @@ const routes = [
       href: '/image',
     },
     {
-      label: 'Video Generation',
-      icon: VideoIcon,
-      color: "text-orange-700",
-      href: '/video',
-    },
-    {
       label: 'Music Generation',
       icon: Music,
       color: "text-emerald-500",
       href: '/music',
     },
     {
-      label: 'Code Generation',
-      icon: Code,
-      color: "text-green-700",
-      href: '/code',
+      label: 'Video Generation',
+      icon: VideoIcon,
+      color: "text-orange-700",
+      href: '/video',
     },
     {
       label: 'Settings',

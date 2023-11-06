@@ -58,22 +58,22 @@ const CodePage = () => {
     }
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        // Success message or any other action you want to take on success.
-        // alert("Code copied to clipboard!");
-        setCopyButtonText("Copied")
-        console.log(text)
-        setTimeout(() => {
-          setCopyButtonText("Copy")
-        }, 3000)
-      })
-      .catch((error) => {
-        // Handle the error. You might want to display an error message to the user.
-        console.error("Copy failed:", error);
-      });
-  };
+  // const copyToClipboard = (text: string) => {
+  //   navigator.clipboard.writeText(text)
+  //     .then(() => {
+  //       // Success message or any other action you want to take on success.
+  //       // alert("Code copied to clipboard!");
+  //       setCopyButtonText("Copied")
+  //       console.log(text)
+  //       setTimeout(() => {
+  //         setCopyButtonText("Copy")
+  //       }, 3000)
+  //     })
+  //     .catch((error) => {
+  //       // Handle the error. You might want to display an error message to the user.
+  //       console.error("Copy failed:", error);
+  //     });
+  // };
 
   return (
     <div>
@@ -155,7 +155,7 @@ const CodePage = () => {
                   pre: ({ node, ...props }) => (
                     <div className="overflow-auto w-full my-2 bg-black text-white p-2 rounded-lg">
                       <div className="flex w-full justify-end">
-                      <Button onClick={() => copyToClipboard(props.children.props.children)}> {copyButtonText}</Button>
+                      {/* <Button>{copyButtonText}</Button> */}
 
                       </div>
                       <pre {...props} />

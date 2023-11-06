@@ -50,7 +50,7 @@ const CodePage = () => {
       });
       setMessages((current) => [...current, userMessage, response.data]);
 
-      form.reset();
+      form.reset(); 
     } catch (error: any) {
       // TODO: Add pro modal
     } finally {

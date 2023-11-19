@@ -22,8 +22,10 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { useUser } from "@clerk/nextjs";
 import { UserAvatar } from "@/components/user-avatar";
 import ReactMarkdown from "react-markdown";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const CodePage = () => {
+  const proModal = useProModal();
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [copyButtonText, setCopyButtonText] = useState<string>("Copy")
@@ -52,7 +54,9 @@ const CodePage = () => {
 
       form.reset(); 
     } catch (error: any) {
-      // TODO: Add pro modal
+      if(error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

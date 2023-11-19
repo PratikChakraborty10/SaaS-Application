@@ -23,8 +23,10 @@ import { UserAvatar } from "@/components/user-avatar";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const ConversationPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
 
   const [photos, setPhotos] = useState<string[]>([]);
@@ -50,7 +52,9 @@ const ConversationPage = () => {
 
       setPhotos(urls);
     } catch (error: any) {
-      // TODO: Pro modal
+      if(error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

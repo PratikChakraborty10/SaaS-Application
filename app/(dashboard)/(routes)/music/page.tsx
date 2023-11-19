@@ -21,8 +21,10 @@ import { Avatar } from "@/components/ui/avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 import { useUser } from "@clerk/nextjs";
 import { UserAvatar } from "@/components/user-avatar";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const ConversationPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
   const [music, setMusic] = useState<string>();
 
@@ -46,7 +48,9 @@ const ConversationPage = () => {
       setMusic(response.data.audio);
       form.reset();
     } catch (error: any) {
-      // TODO: Add pro modal
+      if(error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
